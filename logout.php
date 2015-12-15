@@ -8,39 +8,24 @@ date_default_timezone_set("Asia/Kolkata");
 $date=date('Y-d-m G:i:s');
 
 $sql = "UPDATE logs SET endsessiontime='$date' WHERE `userid`='$user'"; 
-  mysqli_query($con,$sql) or die("some problem in truncate");
+  mysqli_query($con,$sql);
+     $filename=$user."_log.csv";
+     $sql1 = "select l.userid,b.question,l.user_reply,l.sessionstarttime,l.endsessiontime from bot b,logs l where l.q_id=b.id and userid='$user'";
+     $result = mysqli_query($con,$sql1) or die("Selection Error ");
+     $file="C:\wamp\www\/".$user."_log.csv";
+     $fp = fopen($file, 'w');
 
-
-
-
-
-
-// $sql = "select * from $userlog";
-//     $result = mysql_query($sql) or die("Selection Error ");
-// $filename=$userlog."_log.csv";
-//     $fp = fopen($filename, 'w');
-
-//     while($row = mysql_fetch_assoc($result))
-//     {
-//         fputcsv($fp, $row);
-//     }
+      while($row = mysqli_fetch_assoc($result))
+     {
+         fputcsv($fp, $row);
+     }
     
-//     fclose($fp);
+   fclose($fp);
 
-// echo "Complete Record saves as CSV in file: <b style=\"color:red;\">$filename</b>";
+ echo "Complete Record saved  as CSV in file: <b style=\"color:red;\">$filename</b>";
 
 
 	
-
-
-//   mysql_query("UPDATE bot SET $userlog = 0");
-
-  //$query="TRUNCATE table logs";
-//mysqli_query($con,$query) or die("some problem in truncate");
-//  mysql_query("DROP TABLE $userlog") or die("some problem in drop");
-// mysql_query("ALTER TABLE bot DROP $userlog;") or die("some problem in drop");
-
-
 
  
     $_SESSION=array();
