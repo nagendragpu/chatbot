@@ -109,7 +109,7 @@ return false;
 	$(document).ready(function(e) {
 		$.ajaxSetup({cache:false});
 		setInterval(function() {$('#chatlogs').load('logs.php');
-             $(".msg_container_base").animate({ scrollTop: $(".msg_container_base").height() }, "fast");
+             $(".msg_container_base").animate({ scrollTop: $(".document").height() }, "fast");
              return false;
 
     }, 1000);
