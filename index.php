@@ -109,7 +109,11 @@ return false;
 
 	$(document).ready(function(e) {
 		$.ajaxSetup({cache:false});
-		setInterval(function() {$('#chatlogs').load('logs.php');}, 500);
+		setInterval(function() {$('#chatlogs').load('logs.php');
+         $(".msg_container_base").animate({ scrollTop: $(".msg_container_base").height() }, "fast");
+             return false;
+
+    }, 800);
 	}); 
 	</script>
 </head>
