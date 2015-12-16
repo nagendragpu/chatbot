@@ -67,10 +67,8 @@ $(document).ready(function(){
 $("#submit").click(function(){
 var msg = $("#msg").val();
 var id=form1.win.value;
-
 // Returns successful data submission message when the entered information is stored in database.
 var dataString = 'msg1='+ msg +'&id1='+ id;
-
 if(msg=='')
 {
 alert("Please Fill All Fields");
@@ -88,6 +86,7 @@ success: function(result){
 //alert(result);
 }
 });
+
 }
 return false;
 });
@@ -110,10 +109,10 @@ return false;
 	$(document).ready(function(e) {
 		$.ajaxSetup({cache:false});
 		setInterval(function() {$('#chatlogs').load('logs.php');
-         $(".msg_container_base").animate({ scrollTop: $(".msg_container_base").height() }, "fast");
+             $(".msg_container_base").animate({ scrollTop: $(".msg_container_base").height() }, "fast");
              return false;
 
-    }, 800);
+    }, 1000);
 	}); 
 	</script>
 </head>
@@ -132,7 +131,7 @@ return false;
                         <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
                     </div>
                 </div>
-                <div class='panel-body msg_container_base'>
+                <div class='panel-body msg_container_base' id='mssy'>
                         <div id="chatlogs">   
 
                         </div>
