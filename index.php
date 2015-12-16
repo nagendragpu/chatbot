@@ -114,7 +114,7 @@ return false;
 	</script>
 </head>
 <body>
-<a href="logout.php">LOGOUT</a>
+
 <form role="form" name="form1">
 	<div class="container">
     <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
@@ -128,16 +128,11 @@ return false;
                         <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
                     </div>
                 </div>
+                <div class='panel-body msg_container_base'>
+                        <div id="chatlogs">   
 
-                <div class="panel-body msg_container_base">
-                    <div class="row msg_container base_sent">
-                        <div class="col-md-10 col-xs-10">
-                                <div class="messages msg_sent">
-                                	<div id="chatlogs">
-                                    </div>
-                                </div>
-                            
                         </div>
+                </div>
                     </div>                                      
                 </div>
 
@@ -159,5 +154,6 @@ return false;
     </div>
 </div>
 </form>
+<a href="logout.php">LOGOUT</a>
 </body>
 </html>
