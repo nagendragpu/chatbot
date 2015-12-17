@@ -106,15 +106,16 @@ return false;
 });
 
 
-	$(document).ready(function(e) {
-		$.ajaxSetup({cache:false});
-		setInterval(function() {$('#chatlogs').load('logs.php');
-             $(".msg_container_base").animate({ scrollTop: $(".document").height() }, "fast");
-             return false;
 
-    }, 1000);
-	}); 
-	</script>
+    $(document).ready(function(e) {
+        $.ajaxSetup({cache:false});
+        setInterval(function() {$('#chatlogs').load('logs.php');
+        $(".msg_container_base").animate({ scrollTop: $(document).height()*50 }, "fast");
+            return false;
+    },1000);
+
+    }); 
+    </script>
 </head>
 <body>
 
