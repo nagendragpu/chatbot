@@ -67,8 +67,10 @@ $(document).ready(function(){
 $("#submit").click(function(){
 var msg = $("#msg").val();
 var id=form1.win.value;
+
 // Returns successful data submission message when the entered information is stored in database.
 var dataString = 'msg1='+ msg +'&id1='+ id;
+
 if(msg=='')
 {
 alert("Please Fill All Fields");
@@ -86,7 +88,6 @@ success: function(result){
 //alert(result);
 }
 });
-
 }
 return false;
 });
@@ -106,74 +107,69 @@ return false;
 });
 
 
-
     function get_messages() {
     $.ajax({
     url: 'logs.php',
     method: 'GET',
     success: function(data) {
       $('#chatlogs').html(data);
-      $(".msg_container_base").animate({ scrollTop: $(document).height()*50 }, "fast");
+      $(".panel-body").animate({ scrollTop: $(document).height()}, "fast");
     //         return false;
     }
   });
 }
-
-
  setInterval(get_messages, 500);
-
-
-
-    // $(document).ready(function(e) {
-    //     $.ajaxSetup({cache:false});
-    //     setInterval(function() {$('#chatlogs').load('logs.php');
-    //     $(".msg_container_base").animate({ scrollTop: $(document).height()*50 }, "fast");
-    //         return false;
-    // },1000);
-
-   // }); 
-    </script>
+	</script>
 </head>
 <body>
 
-<form role="form" name="form1">
-	<div class="container">
-    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
-        <div class="col-xs-12 col-md-12">
-        	<div class="panel panel-default">
-                <div class="panel-heading top-bar">
-                    <div class="col-md-8 col-xs-8">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - <?php echo $_SESSION['username'];?></h3>
-                    </div>
-                    <div class="col-md-4 col-xs-4" style="text-align: right;">
-                        <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
-                    </div>
-                </div>
-                <div class='panel-body msg_container_base' id='mssy'>
-                        <div id="chatlogs">   
 
-                        </div>
+
+
+
+<form role="form" name="form1">
+
+<div class="container">
+
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat - <?php echo $_SESSION['username'];?>
                 </div>
-                    </div>                                      
+
+                <div class="panel-body">
+                     <ul class="chat" >
+                        <div id="chatlogs">   </div>
+                     </ul>
                 </div>
+
 
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input  id="msg" name="msg5" placeholder="Write your message here..." />
+                        <input id="msg" name="msg5" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <input type="hidden" id="win" name="win" value="1"></input>
                         <span class="input-group-btn">
-
-
-<!-- id="btn-input" type="text" class="form-control input-sm chat_input" -->
-
-                        <button class="btn btn-primary btn-sm" id="submit" >Send</button>
+                            <button class="btn btn-warning btn-sm" id="submit">
+                                Send</button>
                         </span>
                     </div>
                 </div>
-    		</div>
+
+            </div>
+
         </div>
+         
     </div>
+
 </div>
+
+
 </form>
 <a href="logout.php">LOGOUT</a>
 </body>
