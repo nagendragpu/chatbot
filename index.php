@@ -107,14 +107,31 @@ return false;
 
 
 
-    $(document).ready(function(e) {
-        $.ajaxSetup({cache:false});
-        setInterval(function() {$('#chatlogs').load('logs.php');
-        $(".msg_container_base").animate({ scrollTop: $(document).height()*50 }, "fast");
-            return false;
-    },1000);
+    function get_messages() {
+    $.ajax({
+    url: 'logs.php',
+    method: 'GET',
+    success: function(data) {
+      $('#chatlogs').html(data);
+      $(".msg_container_base").animate({ scrollTop: $(document).height()*50 }, "fast");
+    //         return false;
+    }
+  });
+}
 
-    }); 
+
+ setInterval(get_messages, 500);
+
+
+
+    // $(document).ready(function(e) {
+    //     $.ajaxSetup({cache:false});
+    //     setInterval(function() {$('#chatlogs').load('logs.php');
+    //     $(".msg_container_base").animate({ scrollTop: $(document).height()*50 }, "fast");
+    //         return false;
+    // },1000);
+
+   // }); 
     </script>
 </head>
 <body>

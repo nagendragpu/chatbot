@@ -2,7 +2,6 @@
 session_start();
 $username = $_SESSION['username'];
 include 'database.php';
-
  $result = mysqli_query($con,"SELECT * FROM logs where userid='$username' ORDER by id ASC");
  while ($extract = mysqli_fetch_assoc($result)) {
 
