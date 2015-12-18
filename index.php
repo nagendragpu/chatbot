@@ -38,29 +38,6 @@ exit;
 	
 	<script type="text/javascript">
 
-// window.setInterval(function(){
-// {
-// var xmlhttp;
-// if (window.XMLHttpRequest)
-//   {// code for IE7+, Firefox, Chrome, Opera, Safari
-//   xmlhttp=new XMLHttpRequest();
-//   }
-// else
-//   {// code for IE6, IE5
-//   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-//   }
-// xmlhttp.onreadystatechange=function()
-//   {
-//   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-//     {
-//     document.getElementById("chatlogs").innerHTML=xmlhttp.responseText;
-//     }
-//   }
-// xmlhttp.open("GET","logs.php",true);
-// xmlhttp.send();
-// }, 5000);
-
-
 
 
 $(document).ready(function(){
@@ -126,19 +103,12 @@ return false;
 
 
 
-
+<!-- *************************************window 1 ***************************************** -->
 <form role="form" name="form1">
-
-<div class="container">
-
-
+ <div class="container">
     <div class="row">
-
-
         <div class="col-md-4">
-
             <div class="panel panel-primary">
-
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment"></span> Chat - <?php echo $_SESSION['username'];?>
                 </div>
@@ -148,8 +118,6 @@ return false;
                         <div id="chatlogs">   </div>
                      </ul>
                 </div>
-
-
                 <div class="panel-footer">
                     <div class="input-group">
                         <input id="msg" name="msg5" type="text" class="form-control input-sm" placeholder="Type your message here..." />
@@ -160,17 +128,66 @@ return false;
                         </span>
                     </div>
                 </div>
-
             </div>
-
         </div>
-         
-    </div>
-
-</div>
-
-
 </form>
+
+<!-- *************************************window 2 ***************************************** -->
+
+<form name="form2">   
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                </div>
+                <div class="panel-body">
+                    <ul class="chat">
+                         <div id="chatlogs">   </div>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+
+
+<!-- *************************************window 3 ***************************************** -->
+
+<form>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                </div>
+                <div class="panel-body">
+                    <ul class="chat">
+                         <div id="chatlogs">   </div>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                                Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+ </div>
+</form>
+
+
 <a href="logout.php">LOGOUT</a>
 </body>
 </html>
