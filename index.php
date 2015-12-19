@@ -41,13 +41,11 @@ exit;
 
 
 $(document).ready(function(){
-$("#submit").click(function(){
+$("#submit1").click(function(){
 var msg = $("#msg").val();
 var id=form1.win.value;
-
 // Returns successful data submission message when the entered information is stored in database.
 var dataString = 'msg1='+ msg +'&id1='+ id;
-
 if(msg=='')
 {
 alert("Please Fill All Fields");
@@ -70,31 +68,67 @@ return false;
 });
 });
 
-	$(document).on('click', '.panel-heading span.icon_minim', function (e) {
-    var $this = $(this);
-    if (!$this.hasClass('panel-collapsed')) {
-        $this.parents('.panel').find('.panel-body').slideUp();
-        $this.addClass('panel-collapsed');
-        $this.removeClass('glyphicon-minus').addClass('glyphicon-plus');
-    } else {
-        $this.parents('.panel').find('.panel-body').slideDown();
-        $this.removeClass('panel-collapsed');
-        $this.removeClass('glyphicon-plus').addClass('glyphicon-minus');
-    }
+
+// For window2
+$(document).ready(function(){
+$("#submit2").click(function(){
+var msg = $("#msg2").val();
+var id=form2.win.value;
+// Returns successful data submission message when the entered information is stored in database.
+var dataString = 'msg1='+ msg +'&id1='+ id;
+if(msg=='')
+{
+alert("Please Fill All Fields");
+}
+else
+{
+// AJAX Code To Submit Form.
+form2.msg6.value="";
+$.ajax({
+type: "POST",
+url: "insert.php",
+data: dataString,
+cache: false,
+success: function(result){
+//alert(result);
+}
+});
+}
+return false;
+});
 });
 
 
     function get_messages() {
+     var win1='win1='+ 1;
+     var win2='win2='+ 2;
+     var win3='win3='+ 3;
+
     $.ajax({
     url: 'logs.php',
-    method: 'GET',
+    method: 'POST',
+    data: win1,
     success: function(data) {
-      $('#chatlogs').html(data);
+      $('#chatlogs1').html(data);
+      $(".panel-body").animate({ scrollTop: $(document).height()}, "fast");
+    //         return false;
+    }
+  });
+
+      $.ajax({
+    url: 'logs2.php',
+    method: 'POST',
+    data: win2,
+    success: function(data) {
+      $('#chatlogs2').html(data);
       $(".panel-body").animate({ scrollTop: $(document).height()}, "fast");
     //         return false;
     }
   });
 }
+
+
+
  setInterval(get_messages, 500);
 	</script>
 </head>
@@ -115,7 +149,7 @@ return false;
 
                 <div class="panel-body">
                      <ul class="chat" >
-                        <div id="chatlogs">   </div>
+                        <div id="chatlogs1">   </div>
                      </ul>
                 </div>
                 <div class="panel-footer">
@@ -123,7 +157,7 @@ return false;
                         <input id="msg" name="msg5" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <input type="hidden" id="win" name="win" value="1"></input>
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="submit">
+                            <button class="btn btn-warning btn-sm" id="submit1">
                                 Send</button>
                         </span>
                     </div>
@@ -134,7 +168,7 @@ return false;
 
 <!-- *************************************window 2 ***************************************** -->
 
-<form name="form2">   
+<form role="form" name="form2">   
         <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -142,14 +176,16 @@ return false;
                 </div>
                 <div class="panel-body">
                     <ul class="chat">
-                         <div id="chatlogs">   </div>
+                         <div id="chatlogs2">   </div>
                     </ul>
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="msg2" name="msg6" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input type="hidden" id="win" name="win" value="2"></input>
+
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                            <button class="btn btn-warning btn-sm" id="submit2">
                                 Send</button>
                         </span>
                     </div>
@@ -169,7 +205,7 @@ return false;
                 </div>
                 <div class="panel-body">
                     <ul class="chat">
-                         <div id="chatlogs">   </div>
+                         <div id="chatlogs3">   </div>
                     </ul>
                 </div>
                 <div class="panel-footer">

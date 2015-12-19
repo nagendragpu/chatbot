@@ -30,6 +30,7 @@ $sql = "UPDATE logs SET endsessiontime='$date' WHERE `userid`='$user'";
  
     $_SESSION=array();
     $_SESSION['id']="";
+    $_SESSION['id2']="";
     session_regenerate_id(); 
     session_destroy();
 echo "You have been logged out. Click <a href='index.php'> here to log again</a>";

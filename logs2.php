@@ -1,19 +1,16 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
-if(isset($_POST['win1']))
+if(isset($_POST['win2']))
 {
-$win1 = $_POST['win1'];
+$win2 = $_POST['win2'];
 }
-
-// $win3 = $_POST['win3'];
 include 'database.php';
 
+if ($win2==2) {
 
-if($win1==1)
-{
 
-        $result = mysqli_query($con,"SELECT * FROM logs where userid='$username' and windowno='$win1' ORDER by id ASC");
+        $result = mysqli_query($con,"SELECT * FROM logs where userid='$username' and windowno='$win2' ORDER by id ASC");
         $row_cnt=mysqli_num_rows($result);
         if($row_cnt>0){
             while ($extract = mysqli_fetch_assoc($result)) {
@@ -59,10 +56,9 @@ if($win1==1)
             }
         }
 
+
+
 }
 
 
-
 ?>
-
-
