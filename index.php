@@ -98,6 +98,35 @@ return false;
 });
 });
 
+//window 3
+$(document).ready(function(){
+$("#submit3").click(function(){
+var msg = $("#msg3").val();
+var id=form3.win.value;
+// Returns successful data submission message when the entered information is stored in database.
+var dataString = 'msg1='+ msg +'&id1='+ id;
+if(msg=='')
+{
+alert("Please Fill All Fields");
+}
+else
+{
+// AJAX Code To Submit Form.
+form3.msg7.value="";
+$.ajax({
+type: "POST",
+url: "insert.php",
+data: dataString,
+cache: false,
+success: function(result){
+//alert(result);
+}
+});
+}
+return false;
+});
+});
+
 
     function get_messages() {
      var win1='win1='+ 1;
@@ -115,6 +144,7 @@ return false;
     }
   });
 
+    //window2
       $.ajax({
     url: 'logs2.php',
     method: 'POST',
@@ -125,6 +155,22 @@ return false;
     //         return false;
     }
   });
+
+          //window3
+ $.ajax({
+    url: 'logs3.php',
+    method: 'POST',
+    data: win3,
+    success: function(data) {
+      $('#chatlogs3').html(data);
+      $(".panel-body").animate({ scrollTop: $(document).height()}, "fast");
+    //         return false;
+    }
+  });
+
+
+
+      
 }
 
 
@@ -197,7 +243,7 @@ return false;
 
 <!-- *************************************window 3 ***************************************** -->
 
-<form>
+<form role="form" name="form3">   
         <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -210,19 +256,18 @@ return false;
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="msg3" name="msg7" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input type="hidden" id="win" name="win" value="3"></input>
+
                         <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                            <button class="btn btn-warning btn-sm" id="submit3">
                                 Send</button>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
-     </div>
- </div>
 </form>
-
 
 <a href="logout.php">LOGOUT</a>
 </body>
